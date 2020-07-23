@@ -3,11 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Movie API</title>
 </head>
 <body>
     <p>
         Welcome to myFlix, an app where you can access information about your favorite movies and make a list of what you want to watch next!
     </p>
+
+    <table class="content-table">
+        <thead>
+          <tr>
+            <th class="title">Request</th>
+            <th>URL</th>
+            <th>HTTP Method</th>
+            <th>Request Body Data Format</th>
+            <th>Response Body Data Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr> 
+            <td>Get a list of all movies to the user</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object with info about all the movies</td>
+          </tr>
+          <tr>
+            <td>Get data about a single movie</td>
+            <td>/movies/[title]</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>JSON object holding data about a single movie: <p> {
+                "name": "Drowning by Numbers",
+                "release": "1988",
+                “Description”: “A British coroner and his son plays games with a family of three very dangerous women.”,
+                "director": {“Name: "Peter Greenaway",
+                “Birth” : “1942”,
+                “Death”: “N/A”}
+                }, 
+                “Genre”:{
+                “Name”: “Tragicomedy”,
+                “Description”: “A film that is contains elements of both drama and comedy.”}</p></td>
+          </tr>
+          <tr>
+              <td>Get data about a genre</td>
+              <td>/movies/genre/[name]</td>
+              <td>GET</td>
+              <td>None</td>
+              <td>A JSON object with a description of a genre</td>
+          </tr>
+          <tr>
+              <td>Get data about a director</td>
+              <td>/movies/directors/[name]</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object with a information about a director e.g. { “name” :“Val Hoskins” { “bio” : “From San Fermino, she loved films as soon as she was old enough to understand words. She graduated from NYU in 1987 and had firsts etc...”,
+                “birth-year” : “1987”,
+                “death-year” : “N/A”}}</td>
+          </tr>
+          <tr>
+              <td>Allow a new user to register an account</td>
+              <td>/users</td>
+              <td>POST</td>
+              <td>A JSON object containing a users information: 
+                {"Username": "MovieFan123",
+                “Email”: “movies@gmail.com”,
+                “Password” : “admin1234”,
+                “Date-of-birth” : “1/1/1991”}
+                }</td>
+                <td>A text message indicating that the account was successfully created</td>
+          </tr>
+          <tr>
+              <td>Allow users to update their user info</td>
+              <td>/users/[username]</td>
+              <td>PUT</td>
+              <td> A JSON object containing a users updated information: 
+                {"Username": "MovieFan123",
+                “Email”: “movies@gmail.com”,
+                “Password” : “admin1234”,
+                “Date-of-birth” : “1/1/1991”}
+              }</td>
+              <td>A test message indicating that the information was successfully updated</td>
+          </tr>
+          <tr>
+              <td>Allow users to add a movie to a list of their favorites</td>
+              <td>/users/[username]/Favorites/[title]</td>
+              <td>POST</td>
+              <td>None</td>
+              <td>A message indicating the movie was added to the user's list of favorites</td>
+          </tr>
+          <tr>
+              <td>Allow users to remove a movie from their list of favorite</td>
+              <td>/users/[username]/Favorites/[title]</td>
+              <td>DELETE</td>
+              <td>None</td>
+            <td>A message indicating the movie was removed from the user's list of favorites</td>  
+         </tr>
+         <tr>
+             <td>Allow users to deregister</td>
+             <td>/users/[username]</td>
+             <td>DELETE</td>
+             <td>None</td>
+             <td>A message confirming the user's account was deleted</td>
+         </tr>
+        </tbody>
+    </table>
+    
 </body>
 </html>

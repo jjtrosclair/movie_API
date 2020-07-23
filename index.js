@@ -6,70 +6,70 @@ app.use(morgan('common'));
 
 app.get('/movies', (req, res) => {
 
-    let favoriteMovies = {
-            "first": {
+    let movies = [
+            {
                 "name": "Drowning by Numbers",
                 "director": "Peter Greenaway",
                 "release": "1988"
             },
         
-            "second": {
+            {
                 "name": "Sicario",
                 "director": "Dennis Villeneuve",
                 "release": "2015"
             },
         
-            "third": {
+            {
                 "name": "The Life Aquatic with Steve Zissou",
                 "director": "Wes Anderson",
                 "release": "2004"
             },
         
-            "fourth": {
+            {
                 "name": "There Will Be Blood",
                 "director": "Paul Thomas Anderson",
                 "release": "2007"
             },
         
-            "fifth": {
+           {
                 "name": "No Country for Old Men",
                 "director": "The Coen Brothers",
                 "release": "2007"
             },
         
-            "sixth": {
+          {
                 "name": "Winter's Bone",
                 "director": "Debra Granik",
                 "release": "2010"
             },
         
-            "seventh": {
+          {
                 "name": "Full Metal Jacket",
                 "director": "Stanley Kubrick",
                 "release": "1987"
             },
         
-            "eigth": {
+            {
                 "name": "Uncut Gems",
                 "director": "The Safdie Brothers",
                 "release": "2019",
             },
         
-            "ninth": {
+            {
                 "name": "The Departed",
                 "director": "Martin Scorsese",
                 "release": "2006",
             },
         
-            "tenth": {
+         {
                 "name": "Casino Royale",
                 "director": "Martin Campbell",
                 "release": "2006"
             }
         
-    }
+        ]
 
-    res.json(favoriteMovies);
+  
 });
 
 
@@ -80,6 +80,79 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('public'));
+
+
+
+  // Gets the list of data about ALL movies
+
+app.get('/movies', (req, res) => {
+    // res.json(movies);
+    res.status(201);
+  });
+
+// Gets the data about a single movie, by name
+
+app.get('/movies/:name', (req, res) => {
+    // res.json(movies.find((movie) =>
+    //   { return movie.name === req.params.name }));
+    res.status(201)
+  });
+
+// Gets the data about a single genre, by name
+
+app.get('/genres/:name', (req, res) => {
+    // res.json(genres.find((genre) =>
+    //   { return genre.name === req.params.name }));
+    res.status(201)
+  });
+
+  // Gets the data about a single director, by name
+
+app.get('/directors/:name', (req, res) => {
+    // res.json(directors.find((director) =>
+    //   { return director.name === req.params.name }));
+    res.status(201)
+  });
+
+// Allow users to register
+
+app.post('/users', (req, res) => {
+    
+
+    // users.create({
+    //     Username: req.body.Username,
+    //     Password: req.body.Password,
+    //     Email: req.body.Email,
+    //     DateOfBirth: req.body.DateOfBirth
+        
+    //   });
+      
+     res.status(201).send("Account was successfully created.");
+  });
+
+// Allow users to update their account
+
+app.put('/users/:Username', (req, res) => {
+    res.status(201).send("Account was successfully updated.");
+});
+
+//Allow users to add a movie to their favorites
+
+app.post("/users/:Username/Favorites/:name", (req, res) => {
+    // res.status(201).send(re.params.movieName + " was successfully added to your favorites.");
+    res.status(201).send("MOVIE was successfully added to your favorites.");
+});
+
+//Allow users to delete a movie to their favorites
+
+app.delete('/users/:Username/Favorites/:name, (req, res) => {
+    // res.status(201).send(re.params.movieName + " was successfully removed from your favorites.");
+    res.status(201).send("MOVIE was successfully removed from your favorites.");
+});
+
+app.delete('/users', (req, res) => {
+    res.status(201).send("Account was successfully deleted.");
+});
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
