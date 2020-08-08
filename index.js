@@ -17,11 +17,7 @@ app.use(bodyParser.json());
 
 
 
-app.use(function(err, req, res, next) {
-    console.error(err.stack);
-    res.status(500).send("Something broke!");
-    next();
-  });
+
 
 // Gets the list of data about ALL movies
 
