@@ -8,7 +8,7 @@
 </head>
 <body>
     <p>
-        Welcome to myFlix, an app where you can access information about your favorite movies and make a list of what you want to watch next!
+        Welcome to myFlix, an app where you can access information about your favorite movies and the ones you want to watch next!
     </p>
 
     <table class="content-table">
@@ -35,16 +35,15 @@
             <td>GET</td>
             <td>None</td>
             <td>JSON object holding data about a single movie: <p> {
-                "name": "Drowning by Numbers",
-                "release": "1988",
-                “Description”: “A British coroner and his son plays games with a family of three very dangerous women.”,
-                "director": {“Name: "Peter Greenaway",
-                “Birth” : “1942”,
-                “Death”: “N/A”}
+              <br>"Name": "Drowning by Numbers",
+              <br>“Description”: “A British coroner and his son plays games with a family of three very dangerous women.”,
+              <br>"Director": {“Name": "Peter Greenaway",
+              <br>“Birth” : “1942”,
+              <br>“Death”: “N/A”}
                 }, 
-                “Genre”:{
-                “Name”: “Tragicomedy”,
-                “Description”: “A film that is contains elements of both drama and comedy.”}</p></td>
+                <br>“Genre”:{
+                  <br>“Name”: “Tragicomedy”,
+                  <br> “Description”: “A film that is contains elements of both drama and comedy.”}</p></td>
           </tr>
           <tr>
               <td>Get data about a genre</td>
@@ -67,10 +66,10 @@
               <td>/users</td>
               <td>POST</td>
               <td>A JSON object containing a users information: 
-                {"Username": "MovieFan123",
-                “Email”: “movies@gmail.com”,
-                “Password” : “admin1234”,
-                “Date-of-birth” : “1/1/1991”}
+                <br>{"Username": "MovieFan123",
+                <br>“Email”: “movies@gmail.com”,
+                <br>“Password” : “admin1234”,
+                <br>“Birthday” : “1/1/1991”}
                 }</td>
                 <td>A text message indicating that the account was successfully created</td>
           </tr>
@@ -79,10 +78,10 @@
               <td>/users/[username]</td>
               <td>PUT</td>
               <td> A JSON object containing a users updated information: 
-                {"Username": "MovieFan123",
-                “Email”: “movies@gmail.com”,
-                “Password” : “admin1234”,
-                “Date-of-birth” : “1/1/1991”}
+                <br>{"Username": "MovieFan123",
+                <br>“Email”: “movies@gmail.com”,
+                <br>“Password” : “admin1234”,
+                <br>“Birthday” : “1/1/1991”}
               }</td>
               <td>A test message indicating that the information was successfully updated</td>
           </tr>
