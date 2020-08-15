@@ -38,7 +38,9 @@ app.use(cors({
 
 
 
-
+app.get('/', (req, res) => {
+    res.send('Welcome to the myFlix app!');
+  });
 
 // Gets the list of data about ALL movies
 
