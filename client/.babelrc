@@ -1,0 +1,6 @@
+// .babel.rc    tells Babel wha type of transpilation to perform
+
+{
+  "presets": ["env", "react"],
+  "plugins": ["transform-class-properties"]
+}
