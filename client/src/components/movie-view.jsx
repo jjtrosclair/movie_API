@@ -1,15 +1,14 @@
 import React from "react";
 
 export class MovieView extends React.Component {
-
   constructor() {
     super();
 
-    this.state={};
+    this.state = {};
   }
 
-  render () {
-    const {movie} = this.props;
+  render() {
+    const { movie } = this.props;
 
     if (!movie) return null;
 
@@ -26,7 +25,7 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-genre">
           <span className="label">Genre: </span>
-          <span className="value"{movie.Genre.Name}></span>
+          <span className="value">{movie.Genre.Name}</span>
         </div>
         <div className="movie-director">
           <span className="label">Director: </span>

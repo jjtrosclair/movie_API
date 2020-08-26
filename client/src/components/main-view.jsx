@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-import { MovieCard } from "../movie-card/movie-card";
-import { MovieView } from "../movie-view/movie-view";
+import { MovieCard } from "./movie-card";
+import { MovieView } from "./movie-view";
 
 export class MainView extends React.Component {
   constructor() {
@@ -16,7 +16,7 @@ export class MainView extends React.Component {
 
   componentDidMount() {
     axios
-      .get("<https://my-flix-app-4455.herokuapp.com/movies>")
+      .get("https://my-flix-app-4455.herokuapp.com/movies")
       .then((response) => {
         //assign result to the state
         this.setState({
