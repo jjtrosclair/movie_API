@@ -1,9 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-import { LoginView } from "./login-view/login-view";
-import { MovieCard } from "./movie-card";
-import { MovieView } from "./movie-view";
+import { LoginView } from "./login-view/login-view.jsx";
+import { MovieCard } from "./movie-card/movie-card.jsx";
+import { MovieView } from "./movie-view/movie-view.jsx";
+import { RegistrationView } from "./registration-view/registration-view.jsx";
+import MyNavbar from "./navbar/navbar";
 
 export class MainView extends React.Component {
   constructor() {
@@ -43,7 +45,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user } = this.state;
 
     if (!user)
       return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
@@ -52,18 +54,22 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
-        {selectedMovie ? (
-          <MovieView movie={selectedMovie} />
-        ) : (
-          movies.map((movie) => (
-            <MovieCard
-              key={movie._id}
-              movie={movie}
-              onClick={(movie) => this.onMovieClick(movie)}
-            />
-          ))
-        )}
+      <div>
+        <MyNavbar />
+
+        <div className="main-view">
+          {selectedMovie ? (
+            <MovieView movie={selectedMovie} />
+          ) : (
+            movies.map((movie) => (
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+                onClick={(movie) => this.onMovieClick(movie)}
+              />
+            ))
+          )}
+        </div>
       </div>
     );
   }
