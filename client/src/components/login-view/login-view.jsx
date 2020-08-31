@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login-view.scss";
 
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Row, Col, Container } from "react-bootstrap";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
