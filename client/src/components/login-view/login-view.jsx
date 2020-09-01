@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./login-view.scss";
 import axios from "axios";
-
 import { Button, Form } from "react-bootstrap";
 
 export function LoginView(props) {
@@ -10,6 +9,7 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    /* Send a request to the server for authentication */
     axios
       .post("https://my-flix-app-4455.herokuapp.com/login", {
         Username: username,
