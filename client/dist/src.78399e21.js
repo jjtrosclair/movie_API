@@ -46011,7 +46011,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 require("./login-view.scss");
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _reactBootstrap = require("react-bootstrap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -46042,12 +46046,16 @@ function LoginView(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication */
 
-    /* then call props.onLoggedIn(username) */
-
-    props.onLoggedIn(username);
+    _axios.default.post("https://my-flix-app-4455.herokuapp.com/login", {
+      Username: username,
+      Password: password
+    }).then(function (response) {
+      var data = response.data;
+      props.onLoggedIn(data);
+    }).catch(function (e) {
+      console.log("no such user");
+    });
   };
 
   return _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement(_reactBootstrap.Form, {
@@ -46076,7 +46084,7 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Login")))));
 }
-},{"react":"../node_modules/react/index.js","./login-view.scss":"components/login-view/login-view.scss","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./login-view.scss":"components/login-view/login-view.scss","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46289,25 +46297,15 @@ var _Nav = _interopRequireDefault(require("react-bootstrap/Nav"));
 
 var _Navbar = _interopRequireDefault(require("react-bootstrap/Navbar"));
 
-var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
-
-var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
 function MyNavbar() {
   return _react.default.createElement(_Navbar.default, {
     bg: "dark",
     expand: "lg"
-  }, _react.default.createElement(_Navbar.default.Brand, {
-    href: "#"
-  }, _react.default.createElement("img", {
-    src: logo,
-    alt: "logo",
-    style: {
-      width: "150px"
-    }
-  })), _react.default.createElement(_Navbar.default.Toggle, {
+  }, _react.default.createElement(_Navbar.default.Toggle, {
     "aria-controls": "basic-navbar-nav"
   }), _react.default.createElement(_Navbar.default.Collapse, {
     id: "basic-navbar-nav"
@@ -46324,7 +46322,7 @@ function MyNavbar() {
 
 var _default = MyNavbar;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-bootstrap/Nav":"../node_modules/react-bootstrap/esm/Nav.js","react-bootstrap/Navbar":"../node_modules/react-bootstrap/esm/Navbar.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"components/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Nav":"../node_modules/react-bootstrap/esm/Nav.js","react-bootstrap/Navbar":"../node_modules/react-bootstrap/esm/Navbar.js"}],"components/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46549,7 +46547,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63343" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52272" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

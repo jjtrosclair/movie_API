@@ -4,6 +4,7 @@ import axios from "axios";
 import { LoginView } from "./login-view/";
 import { MovieCard } from "./movie-card";
 import { MovieView } from "./movie-view";
+import MyNavbar from "./navbar/navbar";
 
 export class MainView extends React.Component {
   constructor() {
@@ -36,14 +37,39 @@ export class MainView extends React.Component {
     });
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user,
+      user: authData.user.Username
+    });
+
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+
+  }
+
+  getMovies(token) {
+    axios.get("https://my-flix-app-4455.herokuapp.com/movies", {
+      headers: {Authorization: 'Bear ${token}`}
+    })
+    .then(response => {
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
 
+
+
   render() {
     const { movies, selectedMovie, user } = this.state;
+
+   
+
 
     if (!user)
       return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
@@ -52,6 +78,7 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view" />;
 
     return (
+      <MyNavbar/>
       <div className="main-view">
         {selectedMovie ? (
           <MovieView movie={selectedMovie} />
