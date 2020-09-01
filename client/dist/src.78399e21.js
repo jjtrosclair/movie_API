@@ -46058,13 +46058,13 @@ function LoginView(props) {
     });
   };
 
-  return _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement(_reactBootstrap.Form, {
+  return _react.default.createElement(_reactBootstrap.Form, {
     className: "login-form"
   }, _react.default.createElement(_reactBootstrap.Form.Group, {
-    controlId: "formBasicUSername"
+    controlId: "formBasicUsername"
   }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Username:"), _react.default.createElement(_reactBootstrap.Form.Control, {
-    type: "text",
-    placeholder: "Enter a username",
+    type: "username",
+    placeholder: "Enter username",
     value: username,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
@@ -46073,7 +46073,7 @@ function LoginView(props) {
     controlId: "formBasicPassword"
   }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Password: "), _react.default.createElement(_reactBootstrap.Form.Control, {
     type: "password",
-    placeholder: "Enter Password",
+    placeholder: "Password",
     value: password,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
@@ -46082,7 +46082,7 @@ function LoginView(props) {
     variant: "btn-lg btn-dark btn-block",
     type: "submit",
     onClick: handleSubmit
-  }, "Login")))));
+  }, "Login"));
 }
 },{"react":"../node_modules/react/index.js","./login-view.scss":"components/login-view/login-view.scss","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
 "use strict";
@@ -46547,7 +46547,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52272" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50554" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

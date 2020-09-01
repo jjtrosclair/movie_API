@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./login-view.scss";
 import axios from "axios";
 
-import { Button, Form, Row, Col, Container } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -25,38 +25,32 @@ export function LoginView(props) {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Form className="login-form">
-            <Form.Group controlId="formBasicUSername">
-              <Form.Label>Username:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter a username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password: </Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-            <Button
-              variant="btn-lg btn-dark btn-block"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              Login
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+    <Form className="login-form">
+      <Form.Group controlId="formBasicUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control
+          type="username"
+          placeholder="Enter username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password: </Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </Form.Group>
+      <Button
+        variant="btn-lg btn-dark btn-block"
+        type="submit"
+        onClick={handleSubmit}
+      >
+        Login
+      </Button>
+    </Form>
   );
 }

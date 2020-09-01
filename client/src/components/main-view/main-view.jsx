@@ -18,17 +18,13 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://my-flix-app-4455.herokuapp.com/movies")
-      .then((response) => {
-        //assign result to the state
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem("user")
       });
+      this.getMovies(accessToken);
+    }
   }
 
   onMovieClick(movie) {
@@ -43,15 +39,24 @@ export class MainView extends React.Component {
       user: authData.user.Username
     });
 
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
 
   }
 
+  onLoggedOut() {
+    this.setState({
+      user: null
+    });
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  }
+
   getMovies(token) {
     axios.get("https://my-flix-app-4455.herokuapp.com/movies", {
-      headers: {Authorization: 'Bear ${token}`}
+      headers: {Authorization: `Bearer ${token}`}
     })
     .then(response => {
       this.setState({
