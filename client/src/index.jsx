@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { MainView } from "./components/main-view";
+import { MainView } from "../components/main-view";
 
 //import statement indicating that you need to bundle this file
 
