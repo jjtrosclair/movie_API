@@ -7,8 +7,8 @@ import { LoginView } from "./login-view/";
 import { RegistrationView } from "./registration-view";
 import { MovieCard } from "./movie-card";
 import { MovieView } from "./movie-view";
-import {DirectorView} from "./director-view";
-import {GenreView} from "./genre-view";
+import { DirectorView } from "./director-view";
+import { GenreView } from "./genre-view";
 import MyNavbar from "./navbar/navbar";
 
 export class MainView extends React.Component {
@@ -80,7 +80,7 @@ export class MainView extends React.Component {
 
     return (
       <Router>
-        <MyNavbar/>
+        <MyNavbar />
         <div className="main-view">
           <Route
             exact
@@ -96,6 +96,7 @@ export class MainView extends React.Component {
           <Route path="/register" render={() => <RegistrationView />} />
           {/* you keep the rest routes here */}
           <Route
+            exact
             path="/movies/:movieId"
             render={({ match }) => (
               <MovieView
@@ -103,7 +104,8 @@ export class MainView extends React.Component {
               />
             )}
           />
-              <Route
+          <Route
+            exact
             path="/movies/director/:name"
             render={({ match }) => {
               if (!movies) return <div className="main-view" />;
@@ -114,28 +116,28 @@ export class MainView extends React.Component {
                       .Director
                   }
                 />
-                <Route
-                path="/movies/genres/:name"
-                render={({ match }) => {
-                  if (!movies) return <div className="main-view" />;
-                  return (
-                    <GenreView
-                      genre={
-                        movies.find((m) => m.Genre.Name === match.params.name).Genre
-                      }
-                    />
-                  );
-                }}
-              />
               );
             }}
           />
-                    <Route
+          <Route
+            path="/movies/genres/:name"
+            render={({ match }) => {
+              if (!movies) return <div className="main-view" />;
+              return (
+                <GenreView
+                  genre={
+                    movies.find((m) => m.Genre.Name === match.params.name).Genre
+                  }
+                />
+              );
+            }}
+          />
+
+          <Route
             exact
             path="/user"
             render={() => <ProfileView movies={movies} />}
           />
-
         </div>
       </Router>
     );
