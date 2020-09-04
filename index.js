@@ -28,10 +28,6 @@ const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234'];
 
 
-let auth = require('./auth')(app);
-const passport = require('passport');
-require('./passport');
-
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
@@ -43,7 +39,9 @@ app.use(cors({
   }
 }));
 
-
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
 
 app.get('/', (req, res) => {
   res.send('Welcome to the myFlix app!');
